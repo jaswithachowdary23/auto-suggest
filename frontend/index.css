@@ -1,4 +1,19 @@
 h1{
     
-    background-color:  beige;
+    color: brown;
+}
+
+#intro{
+ text-align: center;
+ 
+ border: 3px solid rgb(24, 1, 1);
+
+
+}
+#intro:hover{
+    background-color: burlywood;
+}
+
+#p2{
+    color : blue;
 }
