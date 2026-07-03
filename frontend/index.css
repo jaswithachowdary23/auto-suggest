@@ -11,9 +11,22 @@ h1{
 
 }
 #intro:hover{
-    background-color: burlywood;
+    background-color: lightgrey;
 }
 
 #p2{
     color : blue;
+}
+#nav{
+    text-align: center;
+     background-color: crimson;
+     height: 25px;
+     padding-top: 5px;
+     margin-bottom: 5px;
+}
+#nav a{
+  margin: 0px 5px; 
+  /* margin: y-axis x-axis; */
+  text-decoration: none;
+  color: white;
 }
