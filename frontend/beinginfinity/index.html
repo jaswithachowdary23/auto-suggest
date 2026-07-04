@@ -1,106 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeingInfinity - Auto Suggest</title>
-    <style>
-        /* Two distinct colors for the logo text */
-        .color-being {
-            color: #202124; /* Dark charcoal/black */
-        }
-        .color-infinity {
-            color: #1a73e8; /* Vibrant tech blue */
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BeingInfinity - Auto Suggest</title>
 
-        /* Curved wrapper containing both the left icon and the input field */
-        .search-container {
-            display: inline-flex;
-            align-items: center;
-            border: 1px solid #ccc;
-            border-radius: 25px; /* Curves both ends of the outer bar */
-            padding: 5px 15px;
-            width: 450px;
-            max-width: 80vw;
-            background-color: #ffffff;
-        }
+<style>
+body{margin:0;font:16px Arial,sans-serif}
+.top-nav{display:flex;justify-content:space-between;align-items:center;padding:15px 25px}
+.settings-link{font-size:24px;text-decoration:none;color:black}
+.status-area{display:flex;gap:8px;align-items:center}
+.color-being{color:black}
+.color-infinity{color:blue}
 
-        /* Subtle highlight for the entire bar when typing inside it */
-        .search-container:focus-within {
-            border-color: #888;
-        }
+.search-wrapper{position:relative;display:inline-block;width:480px;max-width:90vw}
+.search-container{display:flex;align-items:center;padding:8px 15px;border:1px solid grey;border-radius:24px;box-shadow:0 1px 6px rgba(0,0,0,.25)}
+.lens-btn,.search-input{border:0;background:none}
+.lens-btn{cursor:pointer;font-size:18px}
+.search-input{width:100%;outline:0;font-size:16px}
 
-        /* Styles the lens button sitting inside on the left */
-        .lens-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px 10px 5px 5px;
-            display: flex;
-            align-items: center;
-        }
+.dropdown-menu{
+display:none;
+position:absolute;
+top:100%;
+left:0;
+width:100%;
+margin-top:5px;
+background:beige;
+border:2px solid black;
+border-radius:12px;
+overflow:hidden;
+z-index:10
+}
 
-        /* Seamless input field without its own internal borders */
-        .search-input {
-            border: none;
-            outline: none;
-            width: 100%;
-            font-size: 16px;
-            background: transparent;
-        }
-    </style>
+.suggestion-item{
+padding:12px 18px;
+cursor:pointer;
+border-bottom:1px solid black
+}
+
+.suggestion-item:last-child{border:0}
+.suggestion-item:hover{background:beige}
+.status-msg,.error-msg{padding:12px 18px;font-size:13px}
+.error-msg{color:crimson}
+</style>
 </head>
-<body bgcolor="#FFFFFF">
 
-    <header>
-        <div align="right">
-            <a href="#settings" aria-label="Settings" title="Settings" style="font-size: 24px; text-decoration: none; color: #333;">
-                &#9881;
-            </a>
-        </div>
-    </header>
+<body>
 
-    <main align="center">
-        
-        <h1>
-            <span class="color-being">Being</span><span class="color-infinity">Infinity</span>
-        </h1>
+<header class="top-nav">
+<a href="#settings" class="settings-link">&#9881;</a>
 
-        <p>
-            <small>One million phrases, four algorithms, prefix based auto suggest</small>
-        </p>
+<div class="status-area">
+<span>&#9679; Online</span>
+<span>&#128340; <span id="search-time">0.02</span> ms</span>
+</div>
+</header>
 
-        <form action="#" method="get">
-            <div class="search-container">
-                
-                <button type="submit" class="lens-btn" aria-label="Search">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </button>
+<main align="center" style="margin-top:40px">
 
-                <input 
-                    type="search" 
-                    class="search-input"
-                    id="search-bar" 
-                    name="query" 
-                    list="phrase-suggestions" 
-                    placeholder="Start typing..." 
-                    autocomplete="off"
-                >
+<h1>
+<span class="color-being">Being</span><span class="color-infinity">Infinity</span>
+</h1>
 
-            </div>
+<p style="color:#666">
+<small>One million phrases, four algorithms, prefix based auto suggest</small>
+</p>
 
-            <datalist id="phrase-suggestions">
-                <option value="prefix based search">
-                <option value="prefix trees and tries">
-                <option value="four algorithms overview">
-                <option value="one million phrases dataset">
-            </datalist>
-        </form>
+<form onsubmit="return false">
+<div class="search-wrapper">
 
-    </main>
+<div class="search-container">
+<button class="lens-btn">&#128269;</button>
+
+<input
+id="search-input"
+class="search-input"
+type="search"
+placeholder="Start typing..."
+autocomplete="off">
+
+</div>
+
+<div id="dropdown-menu" class="dropdown-menu"></div>
+
+</div>
+</form>
+
+</main>
+
+<script src="script.js"></script>
 
 </body>
 </html>
