@@ -15,7 +15,9 @@ h1 {
 #home-intro:hover{
   background-color: lightgray;
 }
-
+#p1{
+    color : rgb(8,122,160);
+}
 #p2{
   color: rgb(8, 122, 160);
 }
@@ -37,20 +39,30 @@ h1 {
 #card{
   align-items: center;
   margin-top: 5px;
+  border:3px solid black;
+  width : 300px;
+  height: 500px;
+  margin: 3px auto;
+  border-radius:8px;
 }
 
 #card-img{
   width: 300px;
   height: 300px;
   align-items: center;
-  margin: 0px auto;
 }
 
 img{
   width: 300px;
   height: 300px;
+  border-radius:8px;
 }
 
 #action{
   text-align: center;
+}
+
+button{
+    width : 100%;
+
 }
